@@ -14,9 +14,12 @@ assert btcTocad(1) == 45000
 (2 points) 
 """
 
-def btcTocad():
-    pass
-
+def btcTocad(amount):
+    currBTC = 45000
+    if type(amount) != float and type(amount) != int:
+        return 'error'
+    cad = amount * 45000
+    return cad
 
 """
 This checks to see if you are running the program as the main script or

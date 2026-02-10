@@ -15,9 +15,14 @@ assert hypotenuse(6,8) == 10
 (2 points)
 """
 
+import math
 
-def hypotenuse():
-    pass
+def hypotenuse(side1, side2):
+    if side1 < 0 or side2 < 0:
+        return None    
+    hyp = round(math.sqrt(side1**2 + side2**2), 2 )    
+    return hyp
+
 
 assert hypotenuse(6,8) == 10
 assert hypotenuse(5,12) == 13
