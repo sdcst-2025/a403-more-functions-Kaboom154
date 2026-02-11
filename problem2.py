@@ -21,8 +21,30 @@ assert triangle(1,1,4) == 0
 (2 points)
 """
 
-def triangle():
-    return
+import math
+from math import pi as pi
+
+def triangle(x,y,z):
+    # dne: biggest side > others
+    # acute: angle of biggest side < pi/2
+    # right: angle of biggest side == pi/2
+    # obtuse: angle of biggest side > pi/2
+    # cosine rule: cos(A) = (b**2+c**2-a**2)/(2*b*c)
+    sides = [x,y,z]
+    sides.sort()
+    a = sides[0]
+    b = sides[1]
+    c = sides[2]
+    if c >= a + b:
+        return 0
+    angle = math.acos((b**2+a**2-c**2)/(2*b*a))
+    if angle < pi/2:
+        return 1
+    elif angle == pi/2:
+        return 2
+    elif angle > pi/2:
+        return 3
+
 
 def tests():
     assert triangle(12,5,13) == 2     

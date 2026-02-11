@@ -15,10 +15,13 @@ determine how many years in the future they will have the same population or
 if they are diverging and will never have the same population
 """
 
-def population():
-    return
+def population(p,r,n):
+    P = p*(1+r)**n
+    return P
 
 def equal(p1,r1,p2,r2):
+
+
     return
 
 def tests():
