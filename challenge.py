@@ -15,14 +15,37 @@ determine how many years in the future they will have the same population or
 if they are diverging and will never have the same population
 """
 
+from math import log10 as log
+
 def population(p,r,n):
     P = p*(1+r)**n
     return P
 
 def equal(p1,r1,p2,r2):
+    
+    # p1*(1+r1)**n = p2*(1+r2)**n
+    # log(p1*(1+r1)**n) = log(p2*(1+r2)**n)
+    # log(p1) + log((1+r1)**n) = log(p2) + log((1+r2)**n)
+    # log(p1) + n*log(1+r1) = log(p2) + n*log(1+r2)
+    # log(p1) - log(p2) = n*log(1+r2) - n*log(1+r1)
+    # log(p1) - log(p2) = n*(log(1+r2) - log(1+r1))
+
+    n = ( log(p1) - log(p2) ) /  (log(1+r2) - log(1+r1) )
+    if n < 0:
+        return None
+    return n
+
+    '''
+    n = 1
+    while population(p1,r1,n) < population(p2,r2,n):
+        n+=1
+    while population(p1,r1,n) > population(p2,r2,n):
+        n-=1
+    return n
+    '''
+    # ^^ does this actually work ?
 
 
-    return
 
 def tests():
     assert round(population(1000,.05, 5)) == 1276
@@ -30,3 +53,4 @@ def tests():
     assert equal(1000,.05,2000,.06) == None
     assert round(equal(1000,.03,2000,.01)) == 35
     
+tests()
